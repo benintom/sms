@@ -1,0 +1,146 @@
+{% extends 'Schedule_App/base.html' %}
+
+{% block content %}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Profile</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"></a>Profile</li>
+                        <li class="breadcrumb-item active">View</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            {{ message }}
+        </div>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+
+                    <!-- Profile Image -->
+                    <div class="card card-primary card-outline">
+                        <div class="card-body box-profile">
+                            <div class="text-center">
+                                <img class="profile-user-img img-fluid img-circle" src="{{ user.profile_pic.url }}"
+                                    alt="User profile picture">
+                            </div>
+
+                            <h3 class="profile-username text-center">{{ student.user.first_name }}
+                                {{ student.user.last_name}}</h3>
+
+                            <p class="text-muted text-center">{{ student.user_type}}</p>
+
+                            <!-- About Me Box -->
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Basic Info</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <ul class="list-group list-group-unbordered mb-3">
+                                        <li class="list-group-item">
+                                            <b>First name</b> <a class="float-right">{{ student.user.first_name }}</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Last name</b> <a class="float-right">{{ student.user.last_name }}</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Gender</b> <a class="float-right">{{ student.user.gender}}</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Date of Birth</b> <a
+                                                class="float-right">{{ student.user.date_of_birth }}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Personal Info</h3>
+                                </div>
+                                <div class="card-body">
+                                    <strong><i class="fa fa-book mr-1"></i> Address</strong>
+
+                                    <p class="text-muted">
+                                        {{ student.user.address }}
+                                    </p>
+
+                                    <hr>
+
+                                    <strong><i class="fa fa-envelope mr-1"></i> Email</strong>
+
+                                    <p class="text-muted">{{ student.user.email }}</p>
+
+                                    <hr>
+
+                                    <strong><i class="fa fa-mobile mr-1"></i> Phone</strong>
+
+                                    <p class="text-muted">+91-{{ student.user.phone }}</p>
+
+                                    <hr>
+                                </div>
+                            </div>
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Guardian Info</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <ul class="list-group list-group-unbordered mb-3">
+                                        <li class="list-group-item">
+                                            <b>Name</b> <a class="float-right">{{ student.guardian_name }}</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Email</b> <a class="float-right">{{ student.guardian_email }}</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Phone</b> <a class="float-right">+91-{{ student.guardian_phone }}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+{% endblock %}
+
+{% block end %}
+<script>
+    window.setTimeout(function () {
+        $(".alert").fadeTo(1000, 0).slideUp(1000, function () {
+            $(this).remove();
+        });
+    }, 4000);
+</script>
+
+{% endblock %}

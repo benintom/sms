@@ -1,0 +1,70 @@
+{% extends 'Schedule_App/base.html' %}
+
+{% block content %}
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">My Tutors</h1>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                {% for tutor in tutors %}
+                <div class="col-md-9 float-left">
+                    <!-- Widget: user widget style 1 -->
+                    <div class="card card-widget widget-user">
+                        <!-- Add the bg color to the header using any of the bg-* classes -->
+                        <div class="widget-user-header bg-info-active">
+                            <h3 class="widget-user-username"><a
+                                    href="{% url 'schedule_tutor' pk=tutor.pk %}">{{ tutor.user.first_name }}
+                                    {{ tutor.user.last_name }} </a>
+                            </h3>
+                            <h5 class="widget-user-desc">{{ tutor.department }}</h5>
+                        </div>
+                        <div class="widget-user-image">
+                            <img class="img-circle elevation-2" src="{{ tutor.user.profile_pic.url }}"
+                                alt="User Avatar">
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-sm-4 border-right">
+                                    <div class="description-block">
+                                        <h5 class="description-header">{{ tutor.subject }}</h5>
+                                        <span class="description-text">SUBJECT</span>
+                                    </div>
+                                    <!-- /.description-block -->
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-sm-4 border-right">
+                                    <div class="description-block">
+                                        <h5 class="description-header">{{ tutor.experience }} Years</h5>
+                                        <span class="description-text">EXPERIENCE</span>
+                                    </div>
+                                    <!-- /.description-block -->
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-sm-4">
+                                    <div class="description-block">
+                                        <h5 class="description-header">{{ tutor.qualification }}</h5>
+                                        <span class="description-text">QUALIFICATION</span>
+                                    </div>
+                                    <!-- /.description-block -->
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                    </div>
+                    <!-- /.widget-user -->
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

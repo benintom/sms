@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Triune | Dashboard</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../static/plugins/font-awesome/css/font-awesome.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../static/dist/css/adminlte.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="../../static/plugins/iCheck/flat/blue.css">
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="../../static/plugins/datepicker/datepicker3.css">
+    <!-- Daterange picker -->
+    <!-- <link rel="stylesheet" href="../../static/plugins/daterangepicker/daterangepicker-bs3.css"> -->
+    <!-- bootstrap wysihtml5 - text editor -->
+    <!-- <link rel="stylesheet" href="../../static/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css"> -->
+    <!-- Google Font: Source Sans Pro -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
+    <!-- Ionicons -->
+    <!-- <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
+    {% block head %}
+    {% endblock %}
+</head>
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        {% if user.is_authenticated %}
+
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+                </li>
+            </ul>
+
+            <!-- SEARCH FORM -->
+            <!-- <form class="form-inline ml-3">
+        <div class="input-group input-group-sm">
+          <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-navbar" type="submit">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </form> -->
+
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Messages Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="fa fa-comments-o"></i>
+                        <span class="badge badge-danger navbar-badge">3</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <a href="#" class="dropdown-item">
+                            <!-- Message Start -->
+                            <div class="media">
+                                <img src="../../static/dist/img/user1-128x128.jpg" alt="User Avatar"
+                                    class="img-size-50 mr-3 img-circle">
+                                <div class="media-body">
+                                    <h3 class="dropdown-item-title">
+                                        Brad Diesel
+                                        <span class="float-right text-sm text-danger"><i class="fa fa-star"></i></span>
+                                    </h3>
+                                    <p class="text-sm">Call me whenever you can...</p>
+                                    <p class="text-sm text-muted"><i class="fa fa-clock-o mr-1"></i> 4 Hours Ago</p>
+                                </div>
+                            </div>
+                            <!-- Message End -->
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <!-- Message Start -->
+                            <div class="media">
+                                <img src="../../static/dist/img/user8-128x128.jpg" alt="User Avatar"
+                                    class="img-size-50 img-circle mr-3">
+                                <div class="media-body">
+                                    <h3 class="dropdown-item-title">
+                                        John Pierce
+                                        <span class="float-right text-sm text-muted"><i class="fa fa-star"></i></span>
+                                    </h3>
+                                    <p class="text-sm">I got your message bro</p>
+                                    <p class="text-sm text-muted"><i class="fa fa-clock-o mr-1"></i> 4 Hours Ago</p>
+                                </div>
+                            </div>
+                            <!-- Message End -->
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <!-- Message Start -->
+                            <div class="media">
+                                <img src="../../static/dist/img/user3-128x128.jpg" alt="User Avatar"
+                                    class="img-size-50 img-circle mr-3">
+                                <div class="media-body">
+                                    <h3 class="dropdown-item-title">
+                                        Nora Silvester
+                                        <span class="float-right text-sm text-warning"><i class="fa fa-star"></i></span>
+                                    </h3>
+                                    <p class="text-sm">The subject goes here</p>
+                                    <p class="text-sm text-muted"><i class="fa fa-clock-o mr-1"></i> 4 Hours Ago</p>
+                                </div>
+                            </div>
+                            <!-- Message End -->
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+                    </div>
+                </li>
+                <!-- Notifications Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell-o"></i>
+                        <span class="badge badge-warning navbar-badge">15</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <span class="dropdown-item dropdown-header">15 Notifications</span>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fa fa-envelope mr-2"></i> 4 new messages
+                            <span class="float-right text-muted text-sm">3 mins</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fa fa-users mr-2"></i> 8 friend requests
+                            <span class="float-right text-muted text-sm">12 hours</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fa fa-file mr-2"></i> 3 new reports
+                            <span class="float-right text-muted text-sm">2 days</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                    </div>
+                </li>
+                <!-- <li class="nav-item">
+          <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i class="fa fa-th-large"></i></a>
+        </li> -->
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar elevation-4 sidebar-light-primary">
+            <!-- Brand Logo -->
+            <a href="#" class="brand-link bg-primary">
+                <img src="../../static/dist/img/T logo.jpg" alt="Truine Logo" class="brand-image img-circle elevation-3"
+                    style="opacity: .8">
+                <span class="brand-text font-weight-light">TRIUNE</span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="{{ user.profile_pic.url }}" class="img-circle elevation-2" alt="User Image">
+                    </div>
+                    <div class="info">
+                        <a href="#" class="d-block">{{ user.first_name }} {{ user.last_name}}</a>
+                    </div>
+                </div>
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+                        <li class="nav-header">DASHBOARD</li>
+                        <li class="nav-item has-treeview" id="list_profile">
+                            <a href="#" class="nav-link" id="profile">
+                                <i class="nav-icon fa fa-address-book"></i>
+                                <p>
+                                    Profile
+                                    <i class="right fa fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{% url 'profile_view' %}" class="nav-link" id="p_v">
+                                        <i class="fa fa-user-o nav-icon"></i>
+                                        <p>View</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'profile_edit' %}" class="nav-link" id="p_e">
+                                        <i class="fa fa-pencil-square-o nav-icon"></i>
+                                        <p>Edit</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview" id="list_schedule">
+                            <a href="#" class="nav-link" id="schedule">
+                                <i class="nav-icon fa fa-calendar"></i>
+                                <p>
+                                    Schedule
+                                    <i class="right fa fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{% url 'schedule_my' %}" class="nav-link" id="s_m">
+                                        <i class="fa fa-calendar-plus-o nav-icon"></i>
+                                        <p>My Schedules</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'my_tutor' %}" class="nav-link" id="s_t">
+                                        <i class="fa fa-calendar-o nav-icon"></i>
+                                        <p>Tutor Schedules</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview" id="list_invoice">
+                            <a href="#" class="nav-link" id="invoice">
+                                <i class="nav-icon fa fa-file-o"></i>
+                                <p>
+                                    Invoice
+                                    <i class="fa fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{% url 'invoice_unpaid' %}" class="nav-link" id="i_u">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>Unpaid</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'invoice_paid' %}" class="nav-link" id="i_p">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>Paid</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="{% url 'notification' %}" class="nav-link" id="notification">
+                                <i class="nav-icon fa fa-bell-o "></i>
+                                <p>
+                                    Notification
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-header">ACCOUNT SETTINGS</li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-cogs"></i>
+                                <p>
+                                    Settings
+                                    <i class="fa fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{% url 'change_password' %}" class="nav-link">
+                                        <i class="fa fa-lock  nav-icon"></i>
+                                        <p>Change Password</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'user_logout' %}" class="nav-link">
+                                        <i class="fa fa-sign-out  nav-icon"></i>
+                                        <p>Log out</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+        {% block content %}
+        {% endblock %}
+
+        <footer class="main-footer">
+            <strong>Copyright &copy; 2016-2019 <a href="#">Triune Academy of Music</a></strong>
+
+            <div class="float-right d-none d-sm-inline-block">
+                All rights reserved
+            </div>
+        </footer>
+    </div>
+    <!-- ./wrapper -->
+    {% endif %}
+
+    <!-- <script>
+        $.widget.bridge('uibutton', $.ui.button);
+    </script> -->
+    <!-- jQuery -->
+    <script src="../../static/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <!-- Bootstrap 4 -->
+    <script src="../../static/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- datepicker -->
+    <script src="../../static/plugins/datepicker/bootstrap-datepicker.js"></script>
+    <!-- Bootstrap WYSIHTML5 -->
+    <script src="../../static/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../../static/dist/js/adminlte.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <!-- <script src="../../static/dist/js/pages/dashboard.js"></script> -->
+    <!-- AdminLTE for demo purposes -->
+    <!-- <script src="../../static/dist/js/demo.js"></script> -->
+    <!-- Sparkline -->
+    <!-- <script src="../../static/plugins/sparkline/jquery.sparkline.min.js"></script> -->
+    <!-- jQuery Knob Chart -->
+    <!-- <script src="../../static/plugins/knob/jquery.knob.js"></script> -->
+    <!-- daterangepicker -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script> -->
+    <!-- <script src="../../static/plugins/daterangepicker/daterangepicker.js"></script> -->
+    <!-- Slimscroll -->
+    <!-- <script src="../../static/plugins/slimScroll/jquery.slimscroll.min.js"></script> -->
+    <!-- FastClick -->
+    <!-- <script src="../../static/plugins/fastclick/fastclick.js"></script> -->
+
+    {% block end %}
+
+    {% endblock %}
+</body>
+
+</html>

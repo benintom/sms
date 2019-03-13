@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>TRIUNE | Registration Page</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../static/dist/css/adminlte.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="../../static/plugins/iCheck/square/blue.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+<body class="hold-transition register-page">
+  {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+    {% if message.tags == 'error' %}
+    <div class="alert alert-danger" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+          aria-hidden="true">&times;</span></button>
+      <strong>Oops!</strong> {{ message }}
+    </div>
+    {% elif message.tags == 'info' %}
+    <div class="alert alert-{{ message.tags }}" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+          aria-hidden="true">&times;</span></button>
+      {{ message }}
+    </div>
+    {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+  <div class="register-box">
+    <div class="register-logo">
+      <a href="{% url 'index_page' %}"><b>Triune</b></a>
+    </div>
+
+    <div class="card">
+      <div class="card-body register-card-body">
+        <form method="post">{% csrf_token %}
+          <div id="registration_pg1">
+            <p class="login-box-msg">Register a new membership</p>
+            <div class="form-group has-feedback">
+              <input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
+            </div>
+            <div class="form-group has-feedback">
+              <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+            </div>
+            <div class="form-group has-feedback">
+              <input type="password" class="form-control" name="retype_password" id="retype_password"
+                placeholder="Retype password" required>
+            </div>
+            <div class="form-group has-feedback">
+              <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+            </div>
+            <div class="row justify-content-end">
+              <div class="col-4">
+                <button type="button" id="next_button" class="btn btn-primary btn-block btn-flat next">Next</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-8">
+                <a href="{% url 'user_login' %}" class="text-center">I already have a membership</a>
+              </div>
+            </div>
+          </div>
+          <div id="registration_pg2">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label>First name</label>
+                <input type="text" class="form-control" name="first_name" placeholder="first name" required>
+              </div>
+              <div class="form-group col-md-6">
+                <label>Last name</label>
+                <input type="text" class="form-control" name="last_name" placeholder="last name" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Gender</label>
+              <select class="form-control" name="gender" required>
+                <option selected disabled>Choose...</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="inputAddress">Address</label>
+              <textarea name="address" name="address" class="form-control" rows="4" placeholder="Address"
+                required></textarea>
+            </div>
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="text" name="phone" pattern="[6-9]{1}[0-9]{9}" title="Enter a valid mobile number"
+                class="form-control" required>
+            </div>
+            <div class="checkbox icheck">
+              <label>
+                <input type="checkbox" required>&nbsp;&nbsp;I agree to the <a href="#" data-toggle="popover"
+                  title="Terms & Conditions"
+                  data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam porta ullamcorper lacus, in bibendum augue volutpat ut. Quisque eget scelerisque magna. Etiam fermentum ornare tempor. Pellentesque dignissim elit sit amet eros malesuada pharetra. Nunc fringilla orci id lorem dictum malesuada.">terms
+                  &
+                  conditions</a>
+              </label>
+            </div>
+            </br>
+            <!-- /.col -->
+            <div class="row">
+              <div class="col-6">
+                <button type="button" id="prev_button"
+                  class="btn btn-primary btn-md previous btn-outline-primary">Previous</button>
+              </div>
+              <div class="col-6">
+                <button id="submit" type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+              </div>
+            </div>
+          </div>
+          <!-- /.col -->
+        </form>
+      </div>
+      <!-- /.form-box -->
+    </div><!-- /.card -->
+  </div>
+  <!-- /.register-box -->
+
+  <!-- jQuery -->
+  <script src="../../static/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="../../static/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- iCheck -->
+  <script src="../../static/plugins/iCheck/icheck.min.js"></script>
+  <script>
+    $(function () {
+      $('input').iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue',
+        increaseArea: '20%' // optional
+      })
+    })
+  </script>
+  <script>
+    $(document).ready(function () {
+      $("#registration_pg2").hide();
+      $('[data-toggle="popover"]').popover();
+      $("#next_button").click(function () {
+        if ($("#username").val() == "" || $("#password").val() == "" || $("#retype_password").val() == "" || $("#email").val() == "") {
+          $("#submit").click();
+        }
+        else {
+          $("#registration_pg1").hide();
+          $("#registration_pg2").show();
+        }
+      });
+      $("#prev_button").click(function () {
+        $("#registration_pg1").show();
+        $("#registration_pg2").hide();
+      });
+    });
+    window.setTimeout(function () {
+      $(".alert").fadeTo(500, 0).slideUp(500, function () {
+        $(this).remove();
+      });
+    }, 4000);
+  </script>
+</body>
+
+</html>

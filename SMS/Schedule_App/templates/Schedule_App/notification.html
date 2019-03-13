@@ -1,0 +1,92 @@
+{% extends 'Schedule_App/base.html' %}
+
+{% block content %}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Notification</h1>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="card">
+                        <div class="card-header p-2">
+                            <ul class="nav nav-pills">
+                                <li class="nav-item">Timeline</li>
+                            </ul>
+                        </div><!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="timeline">
+                                    <!-- The timeline -->
+                                    <ul class="timeline timeline-inverse">
+                                        <!-- timeline time label -->
+                                        <!-- <li class="time-label">
+                                            <span class="bg-danger">
+                                                10 Feb. 2014
+                                            </span>
+                                        </li> -->
+                                        <!-- /.timeline-label -->
+                                        <!-- timeline item -->
+                                        {% for notification in notifications %}
+                                        <li>
+                                            <i class="fa fa-user bg-primary"></i>
+
+                                            <div class="timeline-item">
+                                                <span class="time"><i class="fa fa-clock-o"></i>
+                                                    {{ notification.date_time|timesince }}</span>
+
+                                                <h3 class="timeline-header"><a
+                                                        href="#">{{ notification.assignment.tutor.user.first_name }}
+                                                        {{ notification.assignment.tutor.user.last_name }}</a>
+                                                    sent you an
+                                                    update</h3>
+
+                                                <div class="timeline-body">
+                                                    <div class="row">
+                                                        <div class="container">
+                                                            {{ notification.message }}
+                                                        </div>
+                                                    </div>
+                                                    {% if notification.link != None %}
+                                                    <div class="embed-responsive embed-responsive-16by9 mt-3">
+                                                        <iframe src="//www.youtube.com/embed/{{ notification.link }}"
+                                                            frameborder="0" allowfullscreen
+                                                            class="embed-responsive-item"></iframe>
+                                                    </div>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="timeline-footer">
+                                                    <a href="#" class="btn btn-primary btn-sm">Mark as read</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        {% endfor %}
+                                        <!-- END timeline item -->
+                                    </ul>
+                                </div>
+                                <!-- /.tab-pane -->
+                                <!-- /.tab-pane -->
+                            </div>
+                            <!-- /.tab-content -->
+                        </div><!-- /.card-body -->
+                    </div>
+                    <!-- /.nav-tabs-custom -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+{% endblock %}

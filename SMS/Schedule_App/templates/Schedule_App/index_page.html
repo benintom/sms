@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TRIUNE ACADEMY OF MUSIC</title>
+    <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
+    <meta name="keywords"
+        content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,300|Open+Sans:400,600,700,300' rel='stylesheet'
+        type='text/css'>
+    <link rel="stylesheet" href="../../static/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/index/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/index/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/index/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="../../static/index/css/style.css">
+
+</head>
+
+<body>
+    <!--header-->
+    <header class="main-header" id="header">
+        <div class="bg-color">
+            <div class="container text-center">
+                <div class="wrapper wow fadeInUp delay-05s">
+                    <br><br><br><br><br><br>
+                    <h3 class="title">Welcome</h3>
+                </div>
+            </div>
+            <!--nav-->
+            <nav class="nav navbar-default navbar-fixed-top">
+                <div class="container">
+                    <div class="col-md-12">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#mynavbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="fa fa-bars"></span>
+                            </button>
+                            <a href="#" class="navbar-brand"><img width="50" height="50"
+                                    src="../../static/index/img/T logo.jpg" alt="" class="img-responsive"></a>
+                        </div>
+                        <div class="collapse navbar-collapse navbar-right" id="mynavbar">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="#header">
+                                        <h4><b>Home</b></h4>
+                                    </a></li>
+                                <li><a href="#about">
+                                        <h4><b>About Us</b></h4>
+                                    </a></li>
+                                <li><a href="#gallery">
+                                        <h4><b>Gallery</b></h4>
+                                    </a></li>
+                                <li><a href="#contact">
+                                        <h4><b>Contact Us</b></h4>
+                                    </a></li>
+                                <li><a href="{% url 'user_login' %}">
+                                        <h4><b>Login</b></h4>
+                                    </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!--/ nav-->
+    </header>
+    <!--/ header-->
+
+
+
+
+
+    <!--/welcome-->
+    <section id="cta-1">
+        <div class="container">
+            <div class="row">
+                <div class="cta-info text-center">
+                    <h1 class="top-title" style="color: #E25F2E">Welcome to Triune Academy of Music </h1><br><br>
+                    <p style="font-size: 18px"><b>Our Lady of Immaculate Heart of Mary Church</b>, Nettoor, is the
+                        first in Kerala to offer novenas to Mother Mary in Malayalam. Every Saturday, thousands flock
+                        here to plea their petitions or to offer thanks for the favours received. Blessed Virgin Mary,
+                        through the most sacred heart of Jesus comes to the aid of the miserable with speedy and
+                        necessary help, especially in the most desperate cases. </p><br>
+                    <h3><span class="dec-tec">“</span>So do not fear, for I am with you; do not be dismayed, for I am
+                        your God. I will strengthen you and help you; I will uphold you with my righteous right
+                        hand.<span class="dec-tec">”</span><b> -Isaiah 41:10</b></h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/welcome-->
+
+
+
+    <!--/about us-->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 wow fadeInLeft delay-05s">
+                    <div class="section-title"><br><br><br><br><br><br>
+                        <h2 class="head-title">History of Triune</h2>
+                        <hr class="botm-line">
+                        <div>
+                            <p>Our Lady of Immaculate Heart of Mary Church belonging to the Archdiocese of Verapoly is
+                                located in the midst of Ernakulam city, (near Vyttila) and has completed 70 years of
+                                its fruitful service to the society. Nettoor area was under the Venduruthy parish and
+                                irrespective of Latin – Syrian rites, people used to attend the church. In 1970, IHM
+                                Church, Nettoor, became an independent parish and Rev. Fr. Joseph Thattarasserry was
+                                appointed as the first Parish Priest. And thereafter, it did not take long to become a
+                                pilgrimage centre of the faithful.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <br><br><br><br><br>
+                <div class="col-md-9">
+                    {% for tutor in tutors %}
+                    <div class="col-md-6 wow fadeInRight delay-02s">
+                        <div class="icon">
+                            <img width="50" height="50" src="../../static/index/img/hc.jfif" alt=""
+                                class="img-responsive">
+                        </div>
+                        <div class="icon-text">
+                            <h3 class="txt-tl"><a
+                                    href="{% url 'schedule_tutor' pk=tutor.pk %}">{{ tutor.user.first_name }}
+                                    {{ tutor.user.last_name }}</a></h3>
+                            <h5 class="txt-tl">{{ tutor.department }}</h5>
+                            <p class="txt-para">{{ tutor.subject }}<br>Ph : {{ tutor.user.phone}} </p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <!-- <div class="col-md-6 wow fadeInRight delay-02s">
+                        <div class="icon">
+                            <img width="50" height="50" src="../../static/index/img/hc.jfif" alt=""
+                                class="img-responsive">
+                        </div>
+                        <div class="icon-text">
+                            <h3 class="txt-tl">Rev. Fr. Shine Kattupurakkal</h3>
+                            <p class="txt-para">Asst. Vicar<br>Ph : 9874556321</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 wow fadeInRight delay-04s">
+                        <div class="icon">
+                            <img width="50" height="50" src="../../static/index/img/hc.jfif" alt=""
+                                class="img-responsive">
+                        </div>
+                        <div class="icon-text">
+                            <h3 class="txt-tl">Mr. Jojo Joseph</h3>
+                            <p class="txt-para">Sacristian<br>Ph : 8956471230</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 wow fadeInRight delay-04s">
+                        <div class="icon">
+                            <img width="50" height="50" src="../../static/index/img/hc.jfif" alt=""
+                                class="img-responsive">
+                        </div>
+                        <div class="icon-text">
+                            <h3 class="txt-tl">Mr. Alex Chandy</h3>
+                            <p class="txt-para">Chemadore<br>Ph : 9855467102</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 wow fadeInRight delay-06s">
+                        <div class="icon">
+                            <img width="50" height="50" src="../../static/index/img/hc.jfif" alt=""
+                                class="img-responsive">
+                        </div>
+                        <div class="icon-text">
+                            <h3 class="txt-tl">Mr. Joy Thomas</h3>
+                            <p class="txt-para">Parish Council President<br>Ph : 8974102516</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 wow fadeInRight delay-06s">
+                        <div class="icon">
+                            <img width="50" height="50" src="../../static/index/img/hc.jfif" alt=""
+                                class="img-responsive">
+                        </div>
+                        <div class="icon-text">
+                            <h3 class="txt-tl">Mr. Joseph Alexander</h3>
+                            <p class="txt-para">Parish Council Secretary<br>Ph : 9685471203</p>
+                        </div>
+                    </div> -->
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!--/about us-->
+
+
+
+    <!--bg image-->
+    <section class="section-padding parallax bg-image-2 section wow fadeIn delay-08s" id="book">
+        <div class="container">
+            <div class="row">
+                <br><br><br><br><br><br>
+            </div>
+        </div>
+    </section>
+    <!--/bg image-->
+
+
+
+    <!--gallery-->
+    <section class="section-padding wow fadeInUp delay-02s" id="gallery">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 wow fadeInLeft delay-05s">
+                    <div class="section-title"><br><br><br><br><br><br>
+                        <h2 class="head-title">Class Timings</h2>
+                        <hr class="botm-line">
+                        <div>
+                            <p><b>Daily Classes:</b><br />
+                                09.30 am - 06.30 pm</p>
+                            <p><b>Saturday:</b><br />
+                                09.30 am - 07.30 pm</p>
+                            <p><b>Sundays:</b><br />
+                                10.00 am - 05:00 pm<br />
+                        </div>
+                    </div>
+                </div>
+                <br><br><br><br>
+                <div class="col-md-9 col-sm-12">
+                    <div class="col-md-4 col-sm-6 padding-right-zero">
+                        <div class="portfolio-box design">
+                            <img src="../../static/index/img/pic1.jpg" alt="" class="img-responsive">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 padding-right-zero">
+                        <div class="portfolio-box design">
+                            <img src="../../static/index/img/pic2.jpg" alt="" class="img-responsive">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 padding-right-zero">
+                        <div class="portfolio-box design">
+                            <img src="../../static/index/img/pic3.jpg" alt="" class="img-responsive">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 padding-right-zero">
+                        <div class="portfolio-box design">
+                            <img src="../../static/index/img/pic4.jpg" alt="" class="img-responsive">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 padding-right-zero">
+                        <div class="portfolio-box design">
+                            <img src="../../static/index/img/pic5.jpg" alt="" class="img-responsive">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 padding-right-zero">
+                        <div class="portfolio-box design">
+                            <img src="../../static/index/img/pic6.jpg" alt="" class="img-responsive">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/gallery-->
+
+
+
+
+
+    <!--contact us-->
+    <section class="section-padding wow fadeInUp delay-05s" id="contact">
+        <div class="container">
+            <div class="row white">
+                <div class="col-md-8 col-sm-12">
+                    <div class="section-title"><br><br><br>
+                        <h2 class="head-title black">Contact Us</h2>
+                        <hr class="botm-line">
+                        <p class="sec-para black">Please feel free to contact us for any kind of queries. You can also
+                            get directions using the below given
+                            map...</p>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                    <div class="col-md-4 col-sm-6" style="padding-left:0px;">
+                        <h3 class="cont-title">Email Us</h3>
+                        <div id="sendmessage">Your message has been sent. Thank you!</div>
+                        <div id="errormessage"></div>
+                        <div class="contact-info">
+                            <form action="" method="post" role="form" class="contactForm">
+                                <div class="form-group">
+                                    <input type="text" name="name" class="form-control" id="name"
+                                        placeholder="Your Name" data-rule="minlen:4"
+                                        data-msg="Please enter at least 4 chars" />
+                                    <div class="validation"></div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" name="email" id="email"
+                                        placeholder="Your Email" data-rule="email"
+                                        data-msg="Please enter a valid email" />
+                                    <div class="validation"></div>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" name="message" rows="5" data-rule="required"
+                                        data-msg="Please write something for us" placeholder="Message"></textarea>
+                                    <div class="validation"></div>
+                                </div>
+                                <button type="button" class="btn btn-send">Send</button>
+                            </form>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <h3 class="cont-title">Visit Us</h3>
+                        <div class="location-info">
+                            <p class="white"><span aria-hidden="true" class="fa fa-map-marker"></span>Triune Academy of
+                                Music
+                                <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspRavipuram P. O.
+                                <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspErnakulam</p>
+                            <p class="white"><span aria-hidden="true" class="fa fa-phone"></span>Phone: 0484 - 2703987
+                            </p>
+                            <p class="white"><span aria-hidden="true" class="fa fa-envelope"></span>Email: <a href=""
+                                    class="link-dec">academyofmusic@triune.com</a></p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="contact-icon-container hidden-md hidden-sm hidden-xs">
+                            <span aria-hidden="true" class="fa fa-envelope-o"></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--map-->
+            <br>
+            <div class="vc_column-inner ">
+                <div class="wpb_wrapper">
+                    <div class="wpb_gmaps_widget wpb_content_element"><br><br>
+                        <h2 class="wpb_heading wpb_map_heading">Map &amp; Directions</h2><br>
+                        <div class="wpb_wrapper">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="responsive-map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1964.5943723547664!2d76.28920738669487!3d10.001262754680912!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d6c768380e1%3A0x8df0ac2829c504ba!2sTriune+Academy!5e0!3m2!1sen!2sin!4v1551529130412"
+                    width="1170" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+            <!--/maps-->
+
+        </div>
+    </section>
+    <!--/contact us-->
+
+
+
+
+
+
+    <!--footer-->
+    <footer class="" id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7 footer-copyright">
+                    © Triune Academy of Music - All rights reserved
+                    <div class="credits">
+                        Designed by <a href="index.html">Benin Tom</a>
+                    </div>
+                </div>
+                <div class="col-sm-5 footer-social">
+                    <div class="pull-right hidden-xs hidden-sm">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-dribbble"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--/ footer->
+
+
+
+
+  <!-/contact ends-->
+    <script src="../../static/index/js/jquery.min.js"></script>
+    <script src="../../static/index/js/jquery.easing.min.js"></script>
+    <script src="../../static/index/js/bootstrap.min.js"></script>
+    <script src="../../static/index/js/wow.js"></script>
+    <script src="../../static/index/js/custom.js"></script>
+
+</body>
+
+</html>
